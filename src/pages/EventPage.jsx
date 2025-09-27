@@ -13,9 +13,9 @@ function EventPage() {
 
   if (!event) {
     return (
-      <main style={{ padding: "2rem" }}>
-        <h2>Event not found</h2>
-        <p>This event does not exist.</p>
+      <main className="neo" style={{ padding: "2rem", maxWidth: 500, margin: "2rem auto", textAlign: "center" }}>
+        <h2 style={{ color: "#e573a6" }}>Event not found</h2>
+        <p style={{ color: "#7a2f4d" }}>This event does not exist.</p>
       </main>
     );
   }
@@ -33,32 +33,32 @@ function EventPage() {
   };
 
   return (
-    <main style={{ padding: "2rem" }}>
-      <h2>{event.title}</h2>
-      <div>
+    <main className="neo" style={{ padding: "2rem", maxWidth: 500, margin: "2rem auto" }}>
+      <h2 style={{ color: "#e573a6" }}>{event.title}</h2>
+      <div style={{ color: "#7a2f4d" }}>
         <b>Date:</b> {event.date} <b>Time:</b> {event.time}
       </div>
-      <div style={{ margin: "1rem 0" }}>{event.description}</div>
-      <h3>Join This Event</h3>
-      <form onSubmit={handleSubmit} style={{ maxWidth: 400 }}>
-        <div>
+      <div style={{ margin: "1rem 0", color: "#7a2f4d" }}>{event.description}</div>
+      <h3 style={{ color: "#e573a6" }}>Join This Event</h3>
+      <form onSubmit={handleSubmit} style={{ maxWidth: 400, margin: "0 auto" }}>
+        <div style={{ marginBottom: 16 }}>
           <label>
             Name<br />
-            <input name="name" value={form.name} onChange={handleChange} required />
+            <input className="neo-input" name="name" value={form.name} onChange={handleChange} required />
           </label>
         </div>
-        <div>
+        <div style={{ marginBottom: 16 }}>
           <label>
             Note (optional)<br />
-            <input name="note" value={form.note} onChange={handleChange} />
+            <input className="neo-input" name="note" value={form.note} onChange={handleChange} />
           </label>
         </div>
-        <button type="submit">Add me to the list</button>
+        <button className="neo-btn" type="submit">Add me to the list</button>
       </form>
-      <h3 style={{ marginTop: "2rem" }}>Participants</h3>
+      <h3 style={{ marginTop: "2rem", color: "#e573a6" }}>Participants</h3>
       <ul>
         {participants.map((p, i) => (
-          <li key={i}>
+          <li key={i} style={{ color: "#7a2f4d" }}>
             <b>{p.name}</b> {p.note && <span>- {p.note}</span>}
           </li>
         ))}

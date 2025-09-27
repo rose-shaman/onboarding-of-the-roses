@@ -12,12 +12,12 @@ function App() {
         <Route
           path="/"
           element={
-            <main style={{ padding: "2rem" }}>
-              <h2>Welcome to Rose Sisterhood Onboarding</h2>
+            <main className="neo" style={{ padding: "2rem", maxWidth: 500, margin: "2rem auto", textAlign: "center" }}>
+              <h2 style={{ color: "#e573a6" }}>Welcome to Rose Sisterhood Onboarding</h2>
               <p>
-                <a href="/admin">Create a new event (admin)</a>
+                <a className="neo-btn" href="/admin">Create a new event (admin)</a>
               </p>
-              <p>
+              <p style={{ color: "#7a2f4d" }}>
                 If you received an event link, open it to view and join the event!
               </p>
             </main>

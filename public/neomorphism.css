@@ -1,0 +1,65 @@
+/* Neomorphism (Soft UI) Global Theme */
+
+:root {
+  --neo-bg: #fbeff4; /* soft rose pink background */
+  --neo-shadow-light: #fff5fa; /* lighter pink highlight */
+  --neo-shadow-dark: #e6b7c3; /* soft rose shadow */
+  --neo-accent: #e573a6; /* rose accent for buttons */
+  --neo-accent-dark: #c94f7c; /* deeper rose for active states */
+  --neo-radius: 16px;
+  --neo-shadow: 8px 8px 16px var(--neo-shadow-dark), -8px -8px 16px var(--neo-shadow-light);
+}
+
+body {
+  background: var(--neo-bg);
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  color: #7a2f4d;
+}
+
+.neo {
+  background: var(--neo-bg);
+  border-radius: var(--neo-radius);
+  box-shadow: var(--neo-shadow);
+  transition: box-shadow 0.2s;
+  color: #7a2f4d;
+}
+
+.neo-pressed {
+  box-shadow: inset 4px 4px 8px var(--neo-shadow-dark), inset -4px -4px 8px var(--neo-shadow-light);
+}
+
+
+.neo-btn {
+  background: var(--neo-accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--neo-radius);
+  box-shadow: var(--neo-shadow);
+  padding: 0.75em 2em;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: box-shadow 0.2s, background 0.2s;
+}
+
+.neo-btn:active {
+  background: var(--neo-accent-dark);
+  box-shadow: inset 4px 4px 8px var(--neo-shadow-dark), inset -4px -4px 8px var(--neo-shadow-light);
+}
+
+
+.neo-input {
+  background: var(--neo-bg);
+  border: 2px solid var(--neo-accent);
+  border-radius: var(--neo-radius);
+  box-shadow: var(--neo-shadow);
+  padding: 0.75em 1em;
+  font-size: 1rem;
+  outline: none;
+  color: #7a2f4d;
+  transition: box-shadow 0.2s, border 0.2s;
+}
+
+.neo-input:focus {
+  border: 2px solid var(--neo-accent-dark);
+  box-shadow: 0 0 0 2px var(--neo-accent), var(--neo-shadow);
+}
