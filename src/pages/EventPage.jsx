@@ -1,16 +1,33 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import events from "../data/events.json";
+import { useEffect } from "react";
 import allParticipants from "../data/participants.json";
 
 function EventPage() {
   const { eventId } = useParams();
-  const event = events.find((ev) => ev.id === eventId);
-  const [participants, setParticipants] = useState(
-    allParticipants[eventId] || []
-  );
+  const [event, setEvent] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [participants, setParticipants] = useState([]); // TODO: wire up to backend if needed
   const [form, setForm] = useState({ name: "", note: "" });
 
+  useEffect(() => {
+    setLoading(true);
+    fetch(`http://localhost:4000/events`)
+      .then((res) => res.json())
+      .then((data) => {
+        const found = data.find((ev) => String(ev.id) === String(eventId));
+        setEvent(found || null);
+        setLoading(false);
+      })
+      .catch(() => {
+        setEvent(null);
+        setLoading(false);
+      });
+  }, [eventId]);
+
+  if (loading) {
+    return <main className="neo" style={{ padding: "2rem", maxWidth: 500, margin: "2rem auto", textAlign: "center" }}><p>Loading...</p></main>;
+  }
   if (!event) {
     return (
       <main className="neo" style={{ padding: "2rem", maxWidth: 500, margin: "2rem auto", textAlign: "center" }}>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import events from "../data/events.json";
+
 
 function AdminPage() {
   const [form, setForm] = useState({
@@ -15,20 +15,32 @@ function AdminPage() {
   };
 
   // For demo: generates a random ID and logs event to console.
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const id = Date.now().toString();
-    const newEvent = { id, ...form };
-    // In real app, save newEvent to backend/db here.
-    // For demo, just log and show link.
-    console.log("Created event:", newEvent);
-    setCreatedLink(`/event/${id}`);
-    setForm({
-      title: "",
-      date: "",
-      time: "",
-      description: "",
-    });
+    // Combine date and time for backend
+    const dateTime = form.date + (form.time ? `T${form.time}` : "T00:00");
+    try {
+      const res = await fetch("http://localhost:4000/events", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.title,
+          date: dateTime,
+          description: form.description
+        })
+      });
+      if (!res.ok) throw new Error("Failed to create event");
+      const created = await res.json();
+      setCreatedLink(`/event/${created.id}`);
+      setForm({
+        title: "",
+        date: "",
+        time: "",
+        description: "",
+      });
+    } catch (err) {
+      alert("Error: " + err.message);
+    }
   };
 
   return (
