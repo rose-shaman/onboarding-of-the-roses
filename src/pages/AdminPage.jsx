@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+const API_URL = "https://onboarding-of-the-roses-worker.sonia-ghafarzadeh.workers.dev";
 
 function AdminPage() {
   const [form, setForm] = useState({
@@ -20,7 +21,7 @@ function AdminPage() {
     // Combine date and time for backend
     const dateTime = form.date + (form.time ? `T${form.time}` : "T00:00");
     try {
-      const res = await fetch("http://localhost:4000/events", {
+      const res = await fetch(`${API_URL}/events`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

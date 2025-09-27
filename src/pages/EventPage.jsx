@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import allParticipants from "../data/participants.json";
 
+const API_URL = "https://onboarding-of-the-roses-worker.sonia-ghafarzadeh.workers.dev";
+
 function EventPage() {
   const { eventId } = useParams();
   const [event, setEvent] = useState(null);
@@ -12,7 +14,7 @@ function EventPage() {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`http://localhost:4000/events`)
+    fetch(`${API_URL}/events`)
       .then((res) => res.json())
       .then((data) => {
         const found = data.find((ev) => String(ev.id) === String(eventId));
