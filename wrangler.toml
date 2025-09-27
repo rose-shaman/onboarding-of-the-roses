@@ -1,0 +1,9 @@
+name = "onboarding-of-the-roses-worker"
+main = "cloudflare-worker/index.js"
+compatibility_date = "2025-09-27"
+
+[build]
+command = "npm install"
+
+[vars]
+# You can add environment variables here if needed

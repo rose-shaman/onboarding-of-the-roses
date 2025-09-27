@@ -1,0 +1,8 @@
+{
+  "name": "onboarding-of-the-roses-worker",
+  "type": "module",
+  "main": "cloudflare-worker/index.js",
+  "dependencies": {
+    "@neondatabase/serverless": "^0.6.0"
+  }
+}
