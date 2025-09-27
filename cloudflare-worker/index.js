@@ -1,4 +1,4 @@
-// Cloudflare Worker for NeonDB events API
+// Cloudflare Worker for NeonDB events API for rose-onboarding
 // Uses Neon HTTP driver for serverless Postgres
 import { neon } from "@neondatabase/serverless";
 
